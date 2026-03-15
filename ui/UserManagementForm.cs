@@ -71,3 +71,5 @@ namespace InventorySystem.UI
 // UI Update phase 3 - Author: ousmanseid
 
 // UI Update phase 4 - Author: ousmanseid
+
+// UI Update phase 5 - Author: ousmanseid
