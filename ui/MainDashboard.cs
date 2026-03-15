@@ -219,3 +219,5 @@ namespace InventorySystem.UI
         }
     }
 }
+
+// UI Update phase 2 - Author: ousmanseid
