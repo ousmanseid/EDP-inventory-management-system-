@@ -94,21 +94,37 @@ namespace InventorySystem.UI
                 if (ctrl is Button btn)
                 {
                     btn.Cursor = Cursors.Hand;
-                    btn.Font = new Font("Segoe UI Semibold", 12F);
+                    btn.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
                     btn.TextImageRelation = TextImageRelation.ImageBeforeText;
                     btn.Padding = new Padding(25, 0, 0, 0);
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
 
                     if (btn.Name == "btnLogout")
                     {
                         btn.BackColor = Color.FromArgb(30, 41, 59);
                         btn.ForeColor = Color.FromArgb(248, 113, 113); // Soft red
-                        btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(220, 38, 38);
+                        
+                        btn.MouseEnter += delegate { btn.BackColor = Color.FromArgb(220, 38, 38); btn.ForeColor = Color.White; };
+                        btn.MouseLeave += delegate { btn.BackColor = Color.FromArgb(30, 41, 59); btn.ForeColor = Color.FromArgb(248, 113, 113); };
                     }
                     else
                     {
                         btn.ForeColor = Color.FromArgb(203, 213, 225); // Slate 300
-                        btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 41, 59);
-                        btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(15, 23, 42);
+                        btn.BackColor = Color.FromArgb(15, 23, 42); // Match sidebar
+                        
+                        btn.MouseEnter += delegate { 
+                            if (btn != activeButton) {
+                                btn.BackColor = Color.FromArgb(30, 41, 59); 
+                                btn.ForeColor = Color.White;
+                            }
+                        };
+                        btn.MouseLeave += delegate { 
+                            if (btn != activeButton) {
+                                btn.BackColor = Color.FromArgb(15, 23, 42); 
+                                btn.ForeColor = Color.FromArgb(203, 213, 225);
+                            }
+                        };
                     }
                 }
             }
